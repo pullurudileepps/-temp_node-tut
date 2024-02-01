@@ -12,3 +12,11 @@
 // manual approach (create package.json in the root, create properties etc)
 // npm init (step by step, press enter to skip)
 // npm init -y (everything default)
+
+//dev packages (npm i nodemon (--save-dev or -D))
+
+const _ = require('lodash')
+
+const item = [1, [2, [3, [4]]]]
+const newitem = _.flattenDepth(item)
+console.log(newitem);
