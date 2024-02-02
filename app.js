@@ -15,3 +15,28 @@
 
 //dev packages (npm i nodemon (--save-dev or -D))
 
+/*
+const {writeFileSync} = require('fs')
+for (let i = 0; i < 10000; i++) {
+    writeFileSync('./content/big.txt', `Here is your ID ${i}\n`,{flag: 'a'})
+}
+*/
+
+const http = require('http');
+const fs = require('fs');
+
+/*http.createServer((req,res) => {
+    const first = fs.readFileSync('./content/big.txt', 'utf8');
+    res.end(first);
+}).listen(5000)
+*/
+
+http.createServer((req, res) => {
+    const stream = fs.createReadStream('./content/big.txt', 'utf8');
+    stream.on('open', () => {
+        stream.pipe(res);
+    })
+    stream.on('error', (er) => {
+        res.end(er);
+    })
+}).listen(5000)
