@@ -15,8 +15,3 @@
 
 //dev packages (npm i nodemon (--save-dev or -D))
 
-const _ = require('lodash')
-
-const item = [1, [2, [3, [4]]]]
-const newitem = _.flattenDepth(item)
-console.log(newitem);
